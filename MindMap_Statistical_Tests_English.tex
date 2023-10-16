@@ -1,0 +1,177 @@
+\documentclass[border=10pt,multi,tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+
+\tikzset{
+treenode/.style = {draw,ellipse, align=left,
+                 top color=white, bottom color=blue!20},
+root/.style     = {treenode, font=\large, bottom color=white},
+env/.style      = {treenode, font=\ttfamily\normalsize},
+dummy/.style    = {circle,draw}
+}
+\begin{tikzpicture}
+[  
+ level 1/.style={ edge from parent path={
+        (\tikzparentnode) to[out=0, in=180] (\tikzchildnode)
+        -- (\tikzchildnode)
+    },},
+level 2/.style={minimum width=200pt, edge from parent path={
+        (\tikzparentnode.east) to[out=0, in=180] (\tikzchildnode.south west)
+        -- (\tikzchildnode.south east)
+    },
+    sibling distance=0.6cm},
+level 3/.style={minimum width=200pt,align=right, edge from parent path={
+        (\tikzparentnode) to[out=0, in=180] (\tikzchildnode.south west)
+        -- (\tikzchildnode.south east)
+    },
+    sibling distance=0.6cm},
+level 1/.append style={level distance=6.5cm},
+level 2/.append style={level distance=8cm},
+level 3/.append style={level distance=10cm},
+%edge from parent/.style = {draw, -latex},
+%every node/.style       = {font=\footnotesize},
+sloped,
+     ]
+
+ \node [root] {\textbf{STATISTICAL TESTS}}
+[grow=right]
+  child [sibling distance=9cm] { node{Computer-intensive tests} 
+            child [sibling distance=2.0cm] { node  {Permutation tests}
+				child {node  {permuted T-test ((p)-T-test)}}
+	           	child {node  {Permuted Welch test ((p)WT)}}
+	           	child {node  {Permuted Yuen-Welch test ((p)YWT)}}
+	           	child {node  {Permuted Wald-type statistics ((p)WTS)}}
+	           	child {node  {Permuted Brunner-Munzel statistics ((p)BM)}}
+	           	child {node  {Permuted Brunner-Dette-Munk test}}
+            }
+            child { node  {Randomization Tests}}
+            child [sibling distance=2.0cm] { node  {Bootstrap}
+ 				child {node  {Percentile bootstrap}}
+	           	child {node  {Studentized bootstrap}}
+	           	child {node  {Normal bootstrap}}
+	           	child {node  {Smooth bootstrap}}
+	           	child {node  {Bayesian boostrap}}
+	           	child {node  {Resampling residuals}}           
+	           	child {node  {Wild bootstrap}}           
+            }
+           }
+child [sibling distance=7cm] { node {Bayesian Tests (BHT)}
+            child { node  {Bayesian Hodges-Lehmann tests for statistical equivalence}}
+            child [sibling distance=1.0cm]{ node  {Bayesian Student t-test}
+				child {node  {One sample t-test}}
+	           	child {node  {Bayesian independent samples t-test}}
+	           	child {node  {Bayesian paired samples t-test}}            
+            }
+            child { node  {Bayesian Welch test}}
+            child { node  {Bayesian multinomial test}}
+            child { node  {Bayesian binomial test}}
+            child { node  {Bayesian Mann-Withney test}}
+            child { node  {Bayesian ANOVA}
+				child {node  {Bayesian repeated ANOVA}}
+	           	child {node  {Bayesian Mixed Factor ANOVA}}            
+            }
+            child { node  {Bayesian contingency tables}}
+            child { node  {Bayesian tests for circular uniformity}}
+            child { node  {A/B tests}
+				child {node  {Bayesian A/B testing for binary outcomes}}
+	           	child {node  {Bayesian A/B testing for count outcomes}}
+            }
+           }
+ child [sibling distance=13cm] { node {Nonparametric Statistical Tests}
+            child { node  {Anomaly/Outliers detection tests}
+				child {node  {Distributed assumption}}
+	           	child {node  {Cochran C test}} 
+	           	child {node  {Generalized (extreme Studentized deviate) ESD test}}
+	           	child {node  {Mean slippage (Schwager-Margolin) test}}
+	           	child {node  {Missing Completely At Random (MCAR)}}
+	           	child {node  {Rohlf generalized gap test}}
+	           	child {node  {Generalized (extreme Studentized deviate) ESD Rosner's test}}
+	           	child {node  {Seasonal hybrid ESD test for anomaly detection}}
+	           	child {node  {Tietjen-Moore test}}
+	           	child {node  {Baarda's w-test) ESD test}}
+	           	child {node  {Pope’s tau-test}}
+	           	child {node  {Ferguson test}}
+	           	child {node  {Murphy's test}}
+	           	child {node  {Wilk's tests}}
+            }
+            child { node  {Goodness of fit tests}}
+            child { node  {Multimodality tests}} 
+            child { node  {Means tests}}
+            child { node  {Proportion tests}}
+            child { node  {Variance and dispersion tests}}
+            child { node  {Correlation tests}}
+            child { node  {Models tests}}
+            child { node  {Time Series tests}}
+            child { node  {Spatial tests}}
+            child { node  {Mediation tests}}
+            child { node  {Survival tests}}
+            child { node  {Sensory discrimination tests}}
+            child { node  {Group sequential (interim) tests}}
+            child { node  {Factor Analysis scree tests}}
+            child { node  {Meta-Analysis test}}
+           } ;               
+\tikzset{
+level 1/.style={ edge from parent path={
+        (\tikzparentnode) to[out=180, in=0] (\tikzchildnode)
+        -- (\tikzchildnode)
+    }},
+level 2/.style={minimum width=200pt,align=left, edge from parent path={
+        (\tikzparentnode) to[out=180, in=0] (\tikzchildnode.south east)
+        -- (\tikzchildnode.south west)
+    },
+    sibling distance=0.6cm},
+level 3/.style={minimum width=100pt,align=left, edge from parent path={
+        (\tikzparentnode) to[out=180, in=0] (\tikzchildnode.south east)
+        -- (\tikzchildnode.south west)
+    },
+    sibling distance=0.6cm},
+level 1/.append style={level distance=5.5cm},
+level 2/.append style={level distance=6.5cm},
+level 3/.append style={level distance=10cm},
+%edge from parent/.style = {draw, -latex},
+%every node/.style       = {font=\footnotesize},
+sloped,
+     }
+  \node [root]{\textbf{STATISTICAL TESTS}}
+ [grow=left]
+   child[sibling distance=3.9cm] { node {Parametric Tests}
+           child[sibling distance=1.3cm] { node  {Anomaly/Outliers detection tests}
+			 child {node  {Extreme rank sum test}}
+           	 child {node  {Rank product test}}
+           	 child {node  {Granger-Neave test}}
+           	 child {node  {Innovational outlier tests}}
+           	 child {node  {Additive Outlier tests}}
+           	 child {node  {Walsh's outlier test}}
+           }
+           child { node  {Goodness of fit tests}
+			 child {node  {One-sample chi-squared test}}
+           	 child {node  {Anderson-Darling tests}}
+           	 child {node  {Test for equality of multinomial distributions}}
+           	 child {node  {Lilliefors test (Kolomogor-Smirnov)}}
+           	 child {node  {Kolmogorov-Smirnov test}}
+           	 child {node  {Khmaladze test}}
+           	 child {node  {Cramér von Mises test}}
+           	 child {node  {Glen-Leemis-Barr test}}
+           	 child {node  {Martinez-Iglewicz test}}
+           	 child {node  {Gel-Gastwirth test}}
+           	 child {node  {Shapiro-Wilk test}}
+           	 child {node  {Zhang test}}
+           }             
+           child { node  {Multimodality tests}}
+           child { node  {Mean, scale and location tests}}
+           child { node  {Median tests}}
+           child { node  {Proportion tests/Contingency tables tests}}
+           child { node  {Variance and dispersion tests}}
+           child { node  {ANOVA procedures/Regression tests}}
+           child { node  {Correlation tests}}
+           child { node  {Population based tests}}
+           child { node  {Models tests}}
+           child { node  {Time series (sequences) tests}}
+           child { node  {Spatial tests}}
+           child { node  {Ranges tests}}
+           child { node  {Genetics tests}}
+           child { node  {Survival tests}}
+           child { node  {Meta-analysis tests}}
+           };
+ \end{tikzpicture}
+\end{document}
